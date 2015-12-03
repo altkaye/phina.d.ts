@@ -2,6 +2,8 @@ declare module phina.geom
 {
 export class Vector2
 {
+public x:number;
+public y:number;
  constructor(x:any,y:any);
  clone():any;
  equals(v:any):any;
@@ -46,6 +48,10 @@ declare module phina.geom
 {
 export class Rect
 {
+public x:number;
+public y:number;
+public width:number;
+public height:number;
  constructor(x:any,y:any,width:any,height:any);
  set(x:any,y:any,width:any,height:any):any;
  moveTo(x:any,y:any):any;
@@ -62,6 +68,9 @@ declare module phina.geom
 {
 export class Circle
 {
+public x:number;
+public y:number;
+public radius:number;
  constructor(x:any,y:any,radius:any);
  set(x:any,y:any,radius:any):any;
  moveTo(x:any,y:any):any;
@@ -96,6 +105,7 @@ declare module phina.util
 {
 export class Tween extends phina.util.EventDispatcher
 {
+public superClass:string;
  constructor(target:any);
  fromTo(target:any,beginProps:any,finishProps:any,duration:any,easing:any):any;
  to(target:any,finishProps:any,duration:any,easing:any):any;
@@ -112,6 +122,7 @@ declare module phina.util
 {
 export class Ticker extends phina.util.EventDispatcher
 {
+public superClass:string;
 public frame:any;
 public deltaTime:any;
 public elapsedTime:any;
@@ -128,6 +139,9 @@ declare module phina.util
 {
 export class Grid
 {
+public width:number;
+public columns:number;
+public offset:number;
  constructor();
  span(index:any):any;
  unit():any;
@@ -138,6 +152,7 @@ declare module phina.util
 {
 export class ChangeDispatcher extends phina.util.EventDispatcher
 {
+public superClass:string;
  constructor();
  register(key:any,defaultValue:any):any;
  observe():any;
@@ -148,6 +163,7 @@ declare module phina.util
 {
 export class Flow extends phina.util.EventDispatcher
 {
+public superClass:string;
  constructor(func:any,wait:any);
  resolve(arg:any):any;
  reject():any;
@@ -158,6 +174,10 @@ declare module phina.util
 {
 export class Color
 {
+public r:number;
+public g:number;
+public b:number;
+public a:number;
  constructor(r:any,g:any,b:any,a:any);
  set(r:any,g:any,b:any,a:any):any;
  setFromNumber(r:any,g:any,b:any,a:any):any;
@@ -175,6 +195,7 @@ declare module phina.util
 {
 export class Random
 {
+public seed:number;
  constructor(seed:any);
  random():any;
  randint(min:any,max:any):any;
@@ -187,6 +208,7 @@ declare module phina.asset
 {
 export class Asset extends phina.util.EventDispatcher
 {
+public superClass:string;
  constructor(src:any);
  load(src:any):any;
  isLoaded():any;
@@ -203,6 +225,7 @@ declare module phina.asset
 {
 export class AssetLoader extends phina.util.EventDispatcher
 {
+public superClass:string;
  constructor(params:any);
  load(params:any):any;
 }
@@ -211,6 +234,7 @@ declare module phina.asset
 {
 export class File extends phina.asset.Asset
 {
+public superClass:string;
  constructor();
 protected _load(resolve:any):any;
 }
@@ -219,6 +243,7 @@ declare module phina.asset
 {
 export class Script extends phina.asset.Asset
 {
+public superClass:string;
  constructor();
 protected _load(resolve:any):any;
 }
@@ -227,6 +252,7 @@ declare module phina.asset
 {
 export class Texture extends phina.asset.Asset
 {
+public superClass:string;
  constructor();
 protected _load(resolve:any):any;
 }
@@ -235,6 +261,9 @@ declare module phina.asset
 {
 export class Sound extends phina.asset.Asset
 {
+public superClass:string;
+protected _loopStart:number;
+protected _loopEnd:number;
  constructor();
  play():any;
  stop():any;
@@ -252,6 +281,7 @@ declare module phina.asset
 {
 export class SpriteSheet extends phina.asset.Asset
 {
+public superClass:string;
  constructor();
  setup(params:any):any;
 protected _load(resolve:any):any;
@@ -265,6 +295,7 @@ declare module phina.asset
 {
 export class Font extends phina.asset.Asset
 {
+public superClass:string;
  constructor();
  load(path:any):any;
 protected _load(resolve:any):any;
@@ -277,6 +308,7 @@ declare module phina.input
 {
 export class Input extends phina.util.EventDispatcher
 {
+public superClass:string;
 public domElement:any;
  constructor(domElement:any);
  update():any;
@@ -289,6 +321,7 @@ declare module phina.input
 {
 export class Mouse extends phina.input.Input
 {
+public superClass:string;
  constructor(domElement:any);
  getButton(button:any):any;
  getButtonDown(button:any):any;
@@ -299,6 +332,7 @@ declare module phina.input
 {
 export class Touch extends phina.input.Input
 {
+public superClass:string;
  constructor(domElement:any,isMulti:any);
  getTouch():any;
  getTouchStart():any;
@@ -324,6 +358,7 @@ declare module phina.input
 {
 export class Keyboard extends phina.input.Input
 {
+public superClass:string;
  constructor(domElement:any);
  update():any;
  getKey(key:any):any;
@@ -339,6 +374,7 @@ declare module phina.input
 {
 export class GamepadManager extends phina.util.EventDispatcher
 {
+public superClass:string;
 public gamepads:any;
 protected _created:any;
 protected _rawgamepads:any;
@@ -402,6 +438,7 @@ declare module phina.app
 {
 export class BaseApp extends phina.util.EventDispatcher
 {
+public superClass:string;
 public awake:any;
 public fps:any;
 public frame:any;
@@ -423,6 +460,7 @@ declare module phina.app
 {
 export class Element extends phina.util.EventDispatcher
 {
+public superClass:string;
 public parent:any;
 public children:any;
  constructor();
@@ -444,7 +482,9 @@ declare module phina.app
 {
 export class Object2D extends phina.app.Element
 {
+public superClass:string;
 public position:any;
+public rotation:number;
 public scale:any;
 public origin:any;
  constructor();
@@ -473,6 +513,7 @@ declare module phina.app
 {
 export class Scene extends phina.app.Element
 {
+public superClass:string;
  constructor();
  exit(params:any):any;
 }
@@ -481,6 +522,7 @@ declare module phina.accessory
 {
 export class Accessory extends phina.util.EventDispatcher
 {
+public superClass:string;
  constructor(target:any);
  setTarget(target:any):any;
  getTarget():any;
@@ -493,6 +535,7 @@ declare module phina.accessory
 {
 export class Tweener extends phina.accessory.Accessory
 {
+public superClass:string;
  constructor(target:any);
 protected _init():any;
  update(app:any):any;
@@ -525,6 +568,7 @@ declare module phina.accessory
 {
 export class Draggable extends phina.accessory.Accessory
 {
+public superClass:string;
  constructor(target:any);
  back():any;
  enable():any;
@@ -534,6 +578,7 @@ declare module phina.accessory
 {
 export class Flickable extends phina.accessory.Accessory
 {
+public superClass:string;
  constructor(target:any);
  update():any;
  cancel():any;
@@ -544,6 +589,7 @@ declare module phina.accessory
 {
 export class FrameAnimation extends phina.accessory.Accessory
 {
+public superClass:string;
  constructor(ss:any);
  update():any;
  gotoAndPlay(name:any):any;
@@ -555,6 +601,7 @@ declare module phina.accessory
 {
 export class Physical extends phina.accessory.Accessory
 {
+public superClass:string;
  constructor(target:any);
  update():any;
  force(x:any,y:any):any;
@@ -625,6 +672,7 @@ declare module phina.graphics
 {
 export class CanvasRecorder extends phina.util.EventDispatcher
 {
+public superClass:string;
 protected _id:any;
 public objectURL:any;
  constructor(canvas:any,options:any);
@@ -639,6 +687,9 @@ declare module phina.display
 {
 export class CanvasElement extends phina.app.Object2D
 {
+public superClass:string;
+public alpha:number;
+public blendMode:string;
  constructor(options:any);
  setVisible(flag:any):any;
  show():any;
@@ -650,6 +701,7 @@ declare module phina.display
 {
 export class Shape extends phina.display.CanvasElement
 {
+public superClass:string;
  constructor(options:any);
 protected _render():any;
 protected _renderBackground(width:any,height:any,color:any):any;
@@ -660,6 +712,7 @@ declare module phina.display
 {
 export class RectangleShape extends phina.display.Shape
 {
+public superClass:string;
  constructor(options:any);
 protected _render():any;
 }
@@ -668,6 +721,7 @@ declare module phina.display
 {
 export class CircleShape extends phina.display.Shape
 {
+public superClass:string;
  constructor(options:any);
 protected _render():any;
 }
@@ -676,6 +730,7 @@ declare module phina.display
 {
 export class TriangleShape extends phina.display.Shape
 {
+public superClass:string;
  constructor(options:any);
 protected _render():any;
 }
@@ -684,6 +739,7 @@ declare module phina.display
 {
 export class StarShape extends phina.display.Shape
 {
+public superClass:string;
  constructor(options:any);
 protected _render():any;
 }
@@ -692,6 +748,7 @@ declare module phina.display
 {
 export class PolygonShape extends phina.display.Shape
 {
+public superClass:string;
  constructor(options:any);
 protected _render():any;
 }
@@ -700,6 +757,7 @@ declare module phina.display
 {
 export class HeartShape extends phina.display.Shape
 {
+public superClass:string;
  constructor(options:any);
 protected _render():any;
 }
@@ -708,6 +766,7 @@ declare module phina.display
 {
 export class Sprite extends phina.display.CanvasElement
 {
+public superClass:string;
  constructor(image:any,width:any,height:any);
  draw(canvas:any):any;
  setFrameIndex(index:any,width:any,height:any):any;
@@ -717,6 +776,7 @@ declare module phina.display
 {
 export class Label extends phina.display.Shape
 {
+public superClass:string;
  constructor(options:any);
  calcWidth():any;
  calcHeight():any;
@@ -727,6 +787,7 @@ declare module phina.display
 {
 export class CanvasScene extends phina.app.Scene
 {
+public superClass:string;
  constructor(params:any);
  hitTest():any;
 protected _update():any;
@@ -737,6 +798,7 @@ declare module phina.display
 {
 export class Layer extends phina.display.CanvasElement
 {
+public superClass:string;
  constructor(params:any);
  draw(canvas:any):any;
 }
@@ -745,6 +807,7 @@ declare module phina.display
 {
 export class ThreeLayer extends phina.display.CanvasElement
 {
+public superClass:string;
 public scene:any;
 public camera:any;
 public light:any;
@@ -767,6 +830,7 @@ declare module phina.display
 {
 export class DomApp extends phina.app.BaseApp
 {
+public superClass:string;
 public domElement:any;
  constructor(options:any);
  update():any;
@@ -777,6 +841,7 @@ declare module phina.display
 {
 export class CanvasApp extends phina.display.DomApp
 {
+public superClass:string;
  constructor(options:any);
 protected _draw():any;
  fitScreen():any;
@@ -786,6 +851,7 @@ declare module phina.effect
 {
 export class Wave extends phina.display.CircleShape
 {
+public superClass:string;
  constructor(params:any);
 }
 }
@@ -793,6 +859,7 @@ declare module phina.ui
 {
 export class Button extends phina.display.Shape
 {
+public superClass:string;
  constructor(options:any);
 protected _render():any;
 }
@@ -801,6 +868,7 @@ declare module phina.ui
 {
 export class Gauge extends phina.display.Shape
 {
+public superClass:string;
  constructor(options:any);
  isFull():any;
  isEmpty():any;
@@ -813,6 +881,7 @@ declare module phina.ui
 {
 export class CircleGauge extends phina.ui.Gauge
 {
+public superClass:string;
  constructor(options:any);
 protected _render():any;
 }
@@ -821,6 +890,7 @@ declare module phina.game
 {
 export class ManagerScene extends phina.app.Scene
 {
+public superClass:string;
  constructor(params:any);
  setScenes(scenes:any):any;
  gotoScene(index:any,args:any):any;
@@ -836,6 +906,7 @@ declare module phina.game
 {
 export class SplashScene extends phina.display.CanvasScene
 {
+public superClass:string;
  constructor(options:any);
 protected _init():any;
 }
@@ -844,6 +915,7 @@ declare module phina.game
 {
 export class TitleScene extends phina.display.CanvasScene
 {
+public superClass:string;
  constructor(params:any);
 }
 }
@@ -851,6 +923,7 @@ declare module phina.game
 {
 export class ResultScene extends phina.display.CanvasScene
 {
+public superClass:string;
  constructor(params:any);
 }
 }
@@ -858,6 +931,7 @@ declare module phina.game
 {
 export class LoadingScene extends phina.display.CanvasScene
 {
+public superClass:string;
  constructor(options:any);
 }
 }
@@ -865,6 +939,7 @@ declare module phina.game
 {
 export class CountScene extends phina.display.CanvasScene
 {
+public superClass:string;
  constructor(options:any);
 protected _updateCount():any;
 }
@@ -873,6 +948,7 @@ declare module phina.game
 {
 export class GameApp extends phina.display.CanvasApp
 {
+public superClass:string;
  constructor(options:any);
 }
 }
@@ -880,6 +956,7 @@ declare module phina.game
 {
 export class PieTimer extends phina.display.Shape
 {
+public superClass:string;
  constructor(time:any,style:any);
  update(app:any):any;
  start():any;
@@ -891,6 +968,7 @@ declare module phina.social
 {
 export class Twitter extends phina.display.CircleShape
 {
+public superClass:string;
  constructor(params:any);
 }
 }
