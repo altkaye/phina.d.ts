@@ -112,6 +112,9 @@ declare module phina.util
 {
 export class Ticker extends phina.util.EventDispatcher
 {
+public frame:any;
+public deltaTime:any;
+public elapsedTime:any;
  constructor();
  tick(func:any):any;
  run():any;
@@ -274,6 +277,7 @@ declare module phina.input
 {
 export class Input extends phina.util.EventDispatcher
 {
+public domElement:any;
  constructor(domElement:any);
  update():any;
 protected _start(x:any,y:any,flag:any):any;
@@ -305,6 +309,10 @@ declare module phina.input
 {
 export class TouchList
 {
+public domElement:any;
+public touchMap:any;
+public touches:any;
+protected _id:any;
  constructor(domElement:any);
  getEmpty():any;
  getTouch(id:any):any;
@@ -331,6 +339,9 @@ declare module phina.input
 {
 export class GamepadManager extends phina.util.EventDispatcher
 {
+public gamepads:any;
+protected _created:any;
+protected _rawgamepads:any;
  constructor();
  update():any;
  get(index:any):any;
@@ -343,6 +354,12 @@ declare module phina.input
 {
 export class Gamepad
 {
+public index:any;
+public buttons:any;
+public sticks:any;
+public id:any;
+public mapping:any;
+public timestamp:any;
  constructor(index:any);
  getKey(button:any):any;
  getKeyDown(button:any):any;
@@ -385,6 +402,9 @@ declare module phina.app
 {
 export class BaseApp extends phina.util.EventDispatcher
 {
+public awake:any;
+public fps:any;
+public frame:any;
  constructor();
  run():any;
  replaceScene(scene:any):any;
@@ -403,6 +423,8 @@ declare module phina.app
 {
 export class Element extends phina.util.EventDispatcher
 {
+public parent:any;
+public children:any;
  constructor();
  addChild(child:any):any;
  addChildTo(parent:any):any;
@@ -422,6 +444,9 @@ declare module phina.app
 {
 export class Object2D extends phina.app.Element
 {
+public position:any;
+public scale:any;
+public origin:any;
  constructor();
  hitTest(x:any,y:any):any;
  hitTestRect(x:any,y:any):any;
@@ -539,6 +564,9 @@ declare module phina.graphics
 {
 export class Canvas
 {
+public domElement:any;
+public canvas:any;
+public context:any;
  constructor(canvas:any);
  setSize(width:any,height:any):any;
  setSizeToScreen():any;
@@ -597,6 +625,8 @@ declare module phina.graphics
 {
 export class CanvasRecorder extends phina.util.EventDispatcher
 {
+protected _id:any;
+public objectURL:any;
  constructor(canvas:any,options:any);
  setOption(key:any,value:any):any;
  setOptions(options:any):any;
@@ -715,6 +745,10 @@ declare module phina.display
 {
 export class ThreeLayer extends phina.display.CanvasElement
 {
+public scene:any;
+public camera:any;
+public light:any;
+public renderer:any;
  constructor(params:any);
  draw(canvas:any):any;
 }
@@ -733,6 +767,7 @@ declare module phina.display
 {
 export class DomApp extends phina.app.BaseApp
 {
+public domElement:any;
  constructor(options:any);
  update():any;
 protected _checkClick(e:any):any;
