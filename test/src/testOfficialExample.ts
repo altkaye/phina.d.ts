@@ -5,10 +5,6 @@ class MainScene extends phina.display.CanvasScene {
     private backgroundColor: string;
     private label: phina.display.Label;
 
-    private hoge(...args) {
-
-    }
-
     constructor() {
         super({});
         this.init({});//TODO fix this
@@ -20,8 +16,6 @@ class MainScene extends phina.display.CanvasScene {
         this.label.x = (<any>this).gridX.center(); // x 座標 TODO
         this.label.y = (<any>this).gridY.center(); // y 座標 TODO
         this.label.fill = 'white'; // 塗りつぶし色
-
-        this.hoge(3, 3, 4, 5);
     }
 };
 

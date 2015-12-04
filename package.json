@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/altkaye/phina.d.ts/issues"
   },
-  "homepage": "https://github.com/altkaye/phina.d.ts"
+  "homepage": "https://github.com/altkaye/phina.d.ts",
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-webserver": "~0.9.1",
+    "gulp-typescript": "~2.10.0"
+  }
 }
